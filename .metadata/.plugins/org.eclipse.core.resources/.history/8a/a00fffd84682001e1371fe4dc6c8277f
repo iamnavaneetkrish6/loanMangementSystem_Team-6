@@ -1,0 +1,22 @@
+package com.hexaware.loanmanagementsystem.dto;
+
+import com.hexaware.loanmanagementsystem.entity.LoanApplyDetails;
+
+import jakarta.persistence.OneToOne;
+
+public class PropertyDetailDTO {
+
+	private long propertyId;
+	private String propertyOwner;
+	private String propertyAddress;
+	private double propertyValue;
+
+	
+	private LoanApplyDetails loanApplyDetails;
+	
+	
+	public PropertyDetailDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

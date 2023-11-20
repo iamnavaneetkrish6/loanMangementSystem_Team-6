@@ -1,0 +1,57 @@
+package com.hexaware.loanmanagementsystem.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.hexaware.loanmanagementsystem.dto.CustomerLoanInformationDTO;
+import com.hexaware.loanmanagementsystem.entity.CustomerLoanInformation;
+
+@Service
+public class CustomerLoanInformationImp implements ICustomerLoanInformationService {
+
+	public CustomerLoanInformationImp() {
+
+		super();
+	}
+
+	@Override
+	public CustomerLoanInformation createCustomerLoanInformation(
+			CustomerLoanInformationDTO customerLoanInformationDto) {
+
+		CustomerLoanInformation customerLoanInformationDTO = new CustomerLoanInformation();
+		CustomerLoanInformation.setLoanNumber(customerLoanInformationDto.getLoanNumber());
+		CustomerLoanInformation.setLoanAmount(customerLoanInformationDto.getLoanAmount());
+		CustomerLoanInformation.setCustomerName(customerLoanInformationDto.getCustomerName());
+		
+		customerLoanInformationService.createCustomerLoanInformation(customerLoanInformationDTO);
+		
+		return null;
+	}
+
+	@Override
+	public CustomerLoanInformation updateCustomerLoanInformation(
+			CustomerLoanInformationDTO customerLoanInformationDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteCustomerLoanInformation(long customerLoanInformationID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public CustomerLoanInformation getCustomerLoanInformationByLoanNumber(long customerLoanInformationID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<CustomerLoanInformation> getAllCustomerLoanInformation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

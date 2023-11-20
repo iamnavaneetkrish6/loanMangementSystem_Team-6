@@ -1,0 +1,58 @@
+package com.hexaware.loanmanagementsystem.restcontroller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.hexaware.loanmanagementsystem.dto.LoanApplyDetailsDTO;
+import com.hexaware.loanmanagementsystem.entity.LoanApplyDetails;
+import com.hexaware.loanmanagementsystem.service.ILoanApplyDetailsService;
+
+@RestController
+@RequestMapping("/api/v1/loan-apply-details/")
+public class LoanApplyDetailsRestController {
+
+	@Autowired
+	ILoanApplyDetailsService loanApplyDetailsService;
+	
+	
+	@PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
+	public LoanApplyDetails createCustomerAccountDetails(@RequestBody LoanApplyDetailsDTO loanApplyDetailsDto) {
+
+		return loanApplyDetailsService.createLoanApplyDetails(loanApplyDetailsDto);
+	}
+
+	@PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
+	public LoanApplyDetails updateCustomerAccountDetails(@RequestBody LoanApplyDetailsDTO loanApplyDetailsDto) {
+
+		return loanApplyDetailsService.updateApplyDetails(loanApplyDetailsDto);
+	}
+
+	@DeleteMapping(value = "/delete/{ID}", consumes = "application/json")
+	public String deleteLoanApplyDetailsById(@PathVariable long ID) {
+		loanApplyDetailsService.deleteApplyDetails(ID);
+
+		return "Deleted the customerAccountDetails" + ID;
+	}
+
+	@GetMapping(value = "/getbyid/{loanNo}", produces = "application/json")
+	public LoanApplyDetails getcustomerAccountDetailsByCustomerId(@PathVariable int loanNo) {
+
+		return loanApplyDetailsService.getloanDetailsByLoanNumber(loanNo);
+	}
+
+	@GetMapping(value = "/getAll", produces = "application/json")
+	public List<LoanApplyDetails> getAllAdmin() {
+
+		return loanApplyDetailsService.getAllLoanDetails();
+	}
+	
+}

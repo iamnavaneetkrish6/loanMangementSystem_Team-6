@@ -1,0 +1,59 @@
+/*package com.hexaware.loanmanagementsystem.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.hexaware.loanmanagementsystem.dto.LoanStatusDTO;
+import com.hexaware.loanmanagementsystem.entity.LoanStatus;
+import com.hexaware.loanmanagementsystem.repository.LoanStatusRepository;
+
+@Service
+public class LoanStatusServiceImp implements ILoanStatusService {
+
+
+	@Autowired
+	LoanStatusRepository loanStatusRepository;
+	
+	
+
+	@Override
+	public LoanStatus createLoanStatus(LoanStatusDTO loanStatusDto) {
+		
+		LoanStatus loanStatus = new LoanStatus();
+		loanStatus.setLoanStatus(loanStatusDto.getLoanStatus());
+		
+		
+		return loanStatusRepository.save(loanStatus);
+	}
+
+	@Override
+	public LoanStatus updateLoanStatus(LoanStatusDTO loanStatusDto) {
+		LoanStatus loanStatus = new LoanStatus();
+		loanStatus.setLoanStatus(loanStatusDto.getLoanStatus());
+		
+		
+		return loanStatusRepository.save(loanStatus);
+	}
+
+	@Override
+	public void deleteLoanStatus(long loanStatusID) {
+
+		loanStatusRepository.deleteById(loanStatusID);
+		
+	}
+
+	@Override
+	public LoanStatus getLoanStatusByLoanNumber(long loanNo) {
+		// TODO Auto-generated method stub
+		return loanStatusRepository.findById(loanNo).orElse(new LoanStatus());
+	}
+
+	@Override
+	public List<LoanStatus> getAllLoanStatus() {
+		// TODO Auto-generated method stub
+		return loanStatusRepository.findAll();
+	}
+
+}*/

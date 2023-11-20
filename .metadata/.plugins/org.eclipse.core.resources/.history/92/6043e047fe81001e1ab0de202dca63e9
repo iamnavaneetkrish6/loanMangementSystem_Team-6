@@ -1,0 +1,85 @@
+package com.hexaware.loanmanagementsystem.entity;
+
+
+
+import java.time.LocalDate;
+
+import com.hexaware.loanmanagementsystem.dto.CustomerDetailsDTO;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+@Entity
+public class LoanApplyDetails {
+	private long loanNo;
+	private long loanTypeId;
+	private double loanAmount;
+	private LocalDate loanApplyDate;
+	private String propertyAddress;
+	private String customerName;
+
+	@ManyToOne
+	@JoinColumn(name = "Customer_ID") 
+	private CustomerDetails customerDetails;
+
+	public long getLoanNo() {
+		return loanNo;
+	}
+
+	public void setLoanNo(long loanNo) {
+		this.loanNo = loanNo;
+	}
+
+	public long getLoanTypeId() {
+		return loanTypeId;
+	}
+
+	public void setLoanTypeId(long loanTypeId) {
+		this.loanTypeId = loanTypeId;
+	}
+
+	public double getLoanAmount() {
+		return loanAmount;
+	}
+
+	public void setLoanAmount(double loanAmount) {
+		this.loanAmount = loanAmount;
+	}
+
+	public LocalDate getLoanApplyDate() {
+		return loanApplyDate;
+	}
+
+	public void setLoanApplyDate(LocalDate loanApplyDate) {
+		this.loanApplyDate = loanApplyDate;
+	}
+
+	public String getPropertyAddress() {
+		return propertyAddress;
+	}
+
+	public void setPropertyAddress(String propertyAddress) {
+		this.propertyAddress = propertyAddress;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	public CustomerDetails getCustomerDetails() {
+		return customerDetails;
+	}
+
+	public void setCustomerDetails(CustomerDetails customerDetails) {
+		this.customerDetails = customerDetails;
+	}
+
+
+	
+	
+
+}

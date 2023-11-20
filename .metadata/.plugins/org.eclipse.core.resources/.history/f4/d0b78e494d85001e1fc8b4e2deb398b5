@@ -1,0 +1,15 @@
+package com.hexaware.loanmanagementsystem.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.hexaware.loanmanagementsystem.entity.LoanApplyDetails;
+import java.util.List;
+
+
+@Repository
+public interface LoanApplyDetailsRepository extends JpaRepository<LoanApplyDetails, Long> {
+
+	public findByList<LoanApplyDetails> findByCustomerName(String customerName); 
+	
+}

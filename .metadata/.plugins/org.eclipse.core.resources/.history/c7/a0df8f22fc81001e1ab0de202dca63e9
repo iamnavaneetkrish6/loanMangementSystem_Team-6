@@ -1,0 +1,29 @@
+package com.hexaware.loanmanagementsystem.entity;
+
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+
+@Entity
+public class CustomerDetails {
+
+	private long customerId;
+	private String customerName;
+	private String customerUsername;
+	private String customerPassword;
+	private String customerAddress;
+	private String customerState;
+	private String customerCountry;
+	private String customerEmailId;
+
+	
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customerDetails")
+	private List<LoanApplyDetails> loanApplyDetails;
+	
+	
+	
+	
+}

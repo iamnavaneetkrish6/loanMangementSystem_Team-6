@@ -1,0 +1,26 @@
+package com.hexaware.loanmanagementsystem.entity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToMany;
+
+public class LoanType {
+
+	private long loanTypeId;
+	private String loanTypeName;
+	private double loanInterestRate;
+	private int loanTerm;
+	private String loanDescription;
+	private int loanManagementFees;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "loantype")
+	private List<LoanApplyDetails> loanApplyDetails = new ArrayList <>();
+	
+	
+	public LoanType() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

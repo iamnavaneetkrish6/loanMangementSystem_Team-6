@@ -1,0 +1,29 @@
+package com.hexaware.loanmanagementsystem.dto;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.hexaware.loanmanagementsystem.entity.LoanApplyDetails;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToMany;
+
+public class LoanTypeDTO {
+
+	private long loanTypeId;
+	private String loanTypeName;
+	private double loanInterestRate;
+	private int loanTerm;
+	private String loanDescription;
+	private int loanManagementFees;
+
+
+	private List<LoanApplyDetails> loanApplyDetails = new ArrayList <>();
+	
+	
+	
+	public LoanTypeDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

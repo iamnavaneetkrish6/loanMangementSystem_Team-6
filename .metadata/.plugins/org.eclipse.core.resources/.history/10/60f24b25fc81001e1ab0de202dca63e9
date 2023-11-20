@@ -1,0 +1,22 @@
+package com.hexaware.loanmanagementsystem.dto;
+
+import java.util.List;
+
+public class CustomerDetailsDTO {
+
+	private long customerId;
+	private String customerName;
+	private String customerUsername;
+	private String customerPassword;
+	private String customerAddress;
+	private String customerState;
+	private String customerCountry;
+	private String customerEmailId;
+
+	
+
+	private List<LoanApplyDetailsDTO> loanApplyDetails;
+
+
+
+}

@@ -1,0 +1,10 @@
+package com.hexaware.loanmanagementsystem.service;
+
+public class CustomerLoanInformationImp {
+
+	public CustomerLoanInformationImp() {
+
+		super();
+	}
+
+}

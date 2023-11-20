@@ -1,0 +1,73 @@
+package com.hexaware.loanmanagementsystem.dto;
+
+import com.hexaware.loanmanagementsystem.entity.LoanApplyDetails;
+
+public class PropertyDetailDTO {
+
+	private long propertyId;
+	private String propertyOwner;
+	private String propertyAddress;
+	private double propertyValue;
+	
+
+	
+	private LoanApplyDetails loanApplyDetails;
+	
+	
+	public PropertyDetailDTO() {
+	}
+
+
+	public long getPropertyId() {
+		return propertyId;
+	}
+
+
+	public void setPropertyId(long propertyId) {
+		this.propertyId = propertyId;
+	}
+
+
+	public String getPropertyOwner() {
+		return propertyOwner;
+	}
+
+
+	public void setPropertyOwner(String propertyOwner) {
+		this.propertyOwner = propertyOwner;
+	}
+
+
+	public String getPropertyAddress() {
+		return propertyAddress;
+	}
+
+
+	public void setPropertyAddress(String propertyAddress) {
+		this.propertyAddress = propertyAddress;
+	}
+
+
+	public double getPropertyValue() {
+		return propertyValue;
+	}
+
+
+	public void setPropertyValue(double propertyValue) {
+		this.propertyValue = propertyValue;
+	}
+
+
+	public LoanApplyDetails getLoanApplyDetails() {
+		return loanApplyDetails;
+	}
+
+
+	public void setLoanApplyDetails(LoanApplyDetails loanApplyDetails) {
+		this.loanApplyDetails = loanApplyDetails;
+	}
+
+	
+	
+	
+}

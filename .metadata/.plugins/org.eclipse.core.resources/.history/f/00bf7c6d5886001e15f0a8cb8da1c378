@@ -1,0 +1,56 @@
+package com.hexaware.loanmanagementsystem.restcontroller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.hexaware.loanmanagementsystem.dto.LoanTypeDTO;
+import com.hexaware.loanmanagementsystem.entity.LoanType;
+import com.hexaware.loanmanagementsystem.service.ILoanTypesService;
+
+@RestController
+@RequestMapping("/api/v1/loan-type/")
+public class LoanTypeRestController {
+
+	@Autowired
+	private ILoanTypesService loanTypesService;
+	
+	@PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
+	public LoanType createCustomerAccountDetails(@RequestBody LoanTypeDTO loanTypeDto) {
+
+		return loanTypesService.createLoanType(loanTypeDto);
+	}
+
+	@PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
+	public LoanType updateCustomerAccountDetails(@RequestBody LoanTypeDTO loanTypeDto) {
+
+		return loanTypesService.updateLoanType(loanTypeDto);
+	}
+
+	@DeleteMapping(value = "/delete/{ID}", consumes = "application/json")
+	public String deleteLoanType(@PathVariable long ID) {
+		loanTypesService.deleteLoanTypeById(ID);
+
+		return "Deleted the customerAccountDetails" + ID;
+	}
+
+	@GetMapping(value = "/getbyid/{id}", produces = "application/json")
+	public LoanType getcustomerAccountDetailsByCustomerId(@PathVariable int id) {
+
+		return loanTypesService.getLoanTypeById(id);
+	}
+
+	@GetMapping(value = "/getAll", produces = "application/json")
+	public List<LoanType> getAllAdmin() {
+
+		return loanTypesService.getAllLoanType();
+	}
+}

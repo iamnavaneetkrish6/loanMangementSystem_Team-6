@@ -1,0 +1,24 @@
+package com.hexaware.loanmanagementsystem.service;
+
+import java.util.List;
+
+import com.hexaware.loanmanagementsystem.entity.CustomerDetails;
+import com.hexaware.loanmanagementsystem.entity.CustomerLoanInformation;
+
+public class CustomerLoanHistoryServiceImp implements ICustomerLoanHistoryService {
+
+	private CustomerDetailsServiceImp customerDetailsServiceImp;
+	
+	public CustomerLoanHistoryServiceImp() {
+
+		super();
+	
+	}
+
+	@Override
+	public List<CustomerLoanInformation> getCustomerLoanHistoryByCusmtomerName(String customerName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

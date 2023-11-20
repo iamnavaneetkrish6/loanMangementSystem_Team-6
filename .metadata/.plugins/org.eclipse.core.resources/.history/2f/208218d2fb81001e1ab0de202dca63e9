@@ -1,0 +1,21 @@
+package com.hexaware.loanmanagementsystem.entity;
+
+
+
+import java.time.LocalDate;
+
+import com.hexaware.loanmanagementsystem.dto.CustomerDetailsDTO;
+
+import jakarta.persistence.Entity;
+@Entity
+public class LoanApplyDetails {
+	private long loanNo;
+	private long loanTypeId;
+	private double loanAmount;
+	private LocalDate loanApplyDate;
+	private String propertyAddress;
+	private long CustomerId;
+
+	private CustomerDetailsDTO customerDetails;
+
+}

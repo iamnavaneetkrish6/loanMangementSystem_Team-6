@@ -1,0 +1,25 @@
+package com.hexaware.loanmanagementsystem.entity;
+
+
+
+import java.time.LocalDate;
+
+import com.hexaware.loanmanagementsystem.dto.CustomerDetailsDTO;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+@Entity
+public class LoanApplyDetails {
+	private long loanNo;
+	private long loanTypeId;
+	private double loanAmount;
+	private LocalDate loanApplyDate;
+	private String propertyAddress;
+	private String customerName;
+
+	@ManyToOne
+	@JoinColumn(name = "Customer_ID") 
+	private CustomerDetailsDTO customerDetails;
+
+}

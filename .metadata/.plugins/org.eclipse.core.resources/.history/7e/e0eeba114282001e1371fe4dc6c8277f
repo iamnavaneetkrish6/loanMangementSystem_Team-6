@@ -1,0 +1,83 @@
+package com.hexaware.loanmanagementsystem.dto;
+
+import java.time.LocalDate;
+
+import com.hexaware.loanmanagementsystem.entity.LoanType;
+
+public class LoanApplyDetailsDTO {
+
+	private long loanNo;
+	private long loanTypeId;
+	private double loanAmount;
+	private LocalDate loanApplyDate;
+	private String propertyAddress;
+	private String customerName;
+
+	private CustomerDetailsDTO customerDetails;
+
+	private LoanType loantype;
+	
+	public long getLoanNo() {
+		return loanNo;
+	}
+
+	public void setLoanNo(long loanNo) {
+		this.loanNo = loanNo;
+	}
+
+	public long getLoanTypeId() {
+		return loanTypeId;
+	}
+
+	public void setLoanTypeId(long loanTypeId) {
+		this.loanTypeId = loanTypeId;
+	}
+
+	public double getLoanAmount() {
+		return loanAmount;
+	}
+
+	public void setLoanAmount(double loanAmount) {
+		this.loanAmount = loanAmount;
+	}
+
+	public LocalDate getLoanApplyDate() {
+		return loanApplyDate;
+	}
+
+	public void setLoanApplyDate(LocalDate loanApplyDate) {
+		this.loanApplyDate = loanApplyDate;
+	}
+
+	public String getPropertyAddress() {
+		return propertyAddress;
+	}
+
+	public void setPropertyAddress(String propertyAddress) {
+		this.propertyAddress = propertyAddress;
+	}
+
+
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	public CustomerDetailsDTO getCustomerDetails() {
+		return customerDetails;
+	}
+
+	public void setCustomerDetails(CustomerDetailsDTO customerDetails) {
+		this.customerDetails = customerDetails;
+	}
+	
+
+
+
+	
+	
+}

@@ -1,0 +1,37 @@
+package com.hexaware.loanmanagementsystem.service;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.hexaware.loanmanagementsystem.entity.CustomerDetails;
+import com.hexaware.loanmanagementsystem.entity.CustomerLoanInformation;
+import com.hexaware.loanmanagementsystem.repository.CustomerDetailsRepository;
+
+@Service
+public class CustomerLoanHistoryServiceImp implements ICustomerLoanHistoryService {
+
+	@Autowired
+	private CustomerDetailsRepository customerDetailsRepository;
+
+	Logger logger = LoggerFactory.getLogger(CustomerLoanHistoryServiceImp.class);
+	
+	
+	public CustomerLoanHistoryServiceImp() {
+
+		super();
+
+	}
+
+	@Override
+	public List<CustomerLoanInformation> getCustomerLoanHistoryByCusmtomerName(String customerName) {
+
+		CustomerDetails customerDetails = customerDetailsRepository.findByCustomerName(customerName);
+
+		return customerDetails.getCustomerLoanInformation();
+	}
+
+}

@@ -1,0 +1,66 @@
+package com.hexaware.loanmanagementsystem.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.hexaware.loanmanagementsystem.dto.PropertyDetailDTO;
+import com.hexaware.loanmanagementsystem.entity.PropertyDetail;
+import com.hexaware.loanmanagementsystem.repository.PropertyDetailsRepository;
+
+@Service
+public class PropertyDetailsServiceImp implements IPropertyDetailsService {
+
+	@Autowired
+	PropertyDetailsRepository propertyDetailsRepository;
+	
+	@Autowired
+	ILoanApplyDetailsService loanApplyDetailsService;
+
+	@Override
+	public PropertyDetail createpropertyDetails(PropertyDetailDTO propertyDetailDto) {
+
+		PropertyDetail propertyDetail = new PropertyDetail();
+		propertyDetail.setPropertyOwner(propertyDetailDto.getPropertyOwner());
+		propertyDetail.setPropertyAddress(propertyDetailDto.getPropertyAddress());
+		propertyDetail.setPropertyValue(propertyDetailDto.getPropertyValue());
+
+		loanApplyDetailsService.addPropertyDetailsToLoanApplyDetails(propertyDetail);
+		
+		return propertyDetailsRepository.save(propertyDetail);
+	}
+
+	@Override
+	public PropertyDetail updatepropertyDetails(PropertyDetailDTO propertyDetailDto) {
+		PropertyDetail propertyDetail = new PropertyDetail();
+		propertyDetail.setPropertyId(propertyDetailDto.getPropertyId());
+		propertyDetail.setPropertyOwner(propertyDetailDto.getPropertyOwner());
+		propertyDetail.setPropertyAddress(propertyDetailDto.getPropertyAddress());
+		propertyDetail.setPropertyValue(propertyDetailDto.getPropertyValue());
+		
+		
+		
+
+		return propertyDetailsRepository.save(propertyDetail);
+	}
+
+	@Override
+	public void deletepropertyDetailsById(long propertyDetailsId) {
+
+		propertyDetailsRepository.deleteById(propertyDetailsId);
+
+	}
+
+	@Override
+	public PropertyDetail getpropertyDetailsId(long propertyDetailsId) {
+		return propertyDetailsRepository.findById(propertyDetailsId).orElse(new PropertyDetail());
+	}
+
+	@Override
+	public List<PropertyDetail> getAllPropertyDetails() {
+
+		return propertyDetailsRepository.findAll();
+	}
+
+}

@@ -1,0 +1,21 @@
+package com.hexaware.loanmanagementsystem.dto;
+
+public class CustomerAccountDetailsDTO {
+
+	private long AccountDetailsId;
+	private String Name;
+	private long AccountNumber;
+	private String BankName;
+	private String PanCardNumber;
+	private long AadharNumber;
+	
+	private CustomerDetailsDTO customerDetails;
+	
+	
+	
+		
+	public CustomerAccountDetailsDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

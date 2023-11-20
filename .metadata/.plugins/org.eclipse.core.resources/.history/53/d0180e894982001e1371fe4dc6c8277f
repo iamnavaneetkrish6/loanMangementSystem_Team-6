@@ -1,0 +1,9 @@
+package com.hexaware.loanmanagementsystem.dto;
+
+public class CustomerAccountDetailsDTO {
+
+	public CustomerAccountDetailsDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

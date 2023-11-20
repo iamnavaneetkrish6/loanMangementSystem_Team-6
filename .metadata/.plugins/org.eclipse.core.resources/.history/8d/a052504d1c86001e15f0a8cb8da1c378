@@ -1,0 +1,81 @@
+package com.hexaware.loanmanagementsystem.service;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.hexaware.loanmanagementsystem.dto.AdminDetailsDTO;
+import com.hexaware.loanmanagementsystem.entity.AdminDetails;
+import com.hexaware.loanmanagementsystem.repository.AdminDetailsRepository;
+
+@Service
+public class AdminDetailsServiceImp implements IAdminDetailsService {
+
+	@Autowired
+	private AdminDetailsRepository adminDetailsRepository;
+
+	Logger logger = LoggerFactory.getLogger(AdminDetailsServiceImp.class);
+	
+	
+	@Override
+	public AdminDetails createAdmin(AdminDetailsDTO adminDetails) {
+
+		AdminDetails adminDetail = new AdminDetails();
+		adminDetail.setAdminName(adminDetails.getAdminName());
+		adminDetail.setAdminUsername(adminDetails.getAdminName());
+		adminDetail.setEmailId(adminDetails.getEmailId());
+		adminDetail.setPassword(adminDetails.getPassword());
+
+		logger.info("Admin Service Implementation -added Admin data into database successfully ");
+		
+		return adminDetailsRepository.save(adminDetail);
+	}
+
+	logger.info("Admin Service Implementation -added Admin data into database successfully ");
+	logger.info("Admin Service Implementation -Updated the Admin data in existing record in  database successfully ");
+	logger.info("Admin Data with ID :{} deleted successfully in the Admin Service Implementation ",adminId);
+	logger.info("Admin Service Implementation-Fetching admin with ID :{}",adminId);
+	logger.info("Admin Service Implementation- Fetching all admins ");
+	
+	
+	@Override
+	public AdminDetails updateAdmin(AdminDetailsDTO adminDetails) {
+
+		AdminDetails adminDetail = new AdminDetails();
+		adminDetail.setAdminId(adminDetails.getAdminId());
+		adminDetail.setAdminName(adminDetails.getAdminName());
+		adminDetail.setAdminUsername(adminDetails.getAdminName());
+		adminDetail.setEmailId(adminDetails.getEmailId());
+		adminDetail.setPassword(adminDetails.getPassword());
+
+		logger.info("Admin Service Implementation -Updated the Admin data in existing record in  database successfully ");
+		
+		return adminDetailsRepository.save(adminDetail);
+	}
+
+	@Override
+	public void deleteAdmin(long adminID) {
+
+		
+		logger.info("Admin Data with ID :{} deleted successfully in the Admin Service Implementation ",adminId);
+		
+		adminDetailsRepository.deleteById(adminID);
+
+	}
+
+	@Override
+	public AdminDetails getAdminById(long adminId) {
+
+		return adminDetailsRepository.findById(adminId).orElse(new AdminDetails());
+	}
+
+	@Override
+	public List<AdminDetails> getAllAdmin() {
+
+		return adminDetailsRepository.findAll();
+	}
+
+}

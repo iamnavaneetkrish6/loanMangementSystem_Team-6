@@ -1,0 +1,71 @@
+package com.hexaware.loanmanagementsystem.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.hexaware.loanmanagementsystem.dto.CustomerLoanInformationDTO;
+import com.hexaware.loanmanagementsystem.entity.CustomerLoanInformation;
+import com.hexaware.loanmanagementsystem.repository.CustomerDetailsRepository;
+import com.hexaware.loanmanagementsystem.repository.CustomerLoanInformationRepository;
+
+@Service
+public class CustomerLoanInformationImp implements ICustomerLoanInformationService {
+
+	@Autowired
+	private CustomerLoanInformationRepository customerLoanInformationRepository; 
+	
+	@Autowired
+	private CustomerDetailsRepository customerDetailsRepository;
+	
+	
+	public CustomerLoanInformationImp() {
+
+		super();
+	}
+
+	@Override
+	public CustomerLoanInformation createCustomerLoanInformation(
+			CustomerLoanInformationDTO customerLoanInformationDto) {
+
+		// from loanapplydetails auto enter
+		CustomerLoanInformation customerLoanInformation = new CustomerLoanInformation();
+		customerLoanInformation.setLoanNumber(customerLoanInformationDto.getLoanNumber());
+		customerLoanInformation.setLoanAmount(customerLoanInformationDto.getLoanAmount());
+		customerLoanInformation.setCustomerName(customerLoanInformationDto.getCustomerName());
+		
+		// get customer details
+		
+		
+		
+		
+		return   customerLoanInformationRepository.save(customerLoanInformation) ;
+	}
+
+	@Override
+	public CustomerLoanInformation updateCustomerLoanInformation(
+			CustomerLoanInformationDTO customerLoanInformationDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteCustomerLoanInformation(long customerLoanInformationID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public CustomerLoanInformation getCustomerLoanInformationByLoanNumber(long customerLoanInformationID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<CustomerLoanInformation> getAllCustomerLoanInformation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

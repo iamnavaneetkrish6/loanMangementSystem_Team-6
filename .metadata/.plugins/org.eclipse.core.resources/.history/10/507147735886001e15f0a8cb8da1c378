@@ -1,0 +1,57 @@
+package com.hexaware.loanmanagementsystem.restcontroller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.hexaware.loanmanagementsystem.dto.PropertyDetailDTO;
+import com.hexaware.loanmanagementsystem.entity.PropertyDetail;
+import com.hexaware.loanmanagementsystem.service.IPropertyDetailsService;
+
+@RestController
+@RequestMapping("/api/v1/property-details/")
+public class PropertyDetailRestController {
+
+	@Autowired
+	IPropertyDetailsService propertyDetailsService;
+	
+	@PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
+	public PropertyDetail createCustomerAccountDetails(@RequestBody PropertyDetailDTO propertyDetailDto) {
+
+		return propertyDetailsService.createpropertyDetails(propertyDetailDto);
+	}
+
+	@PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
+	public PropertyDetail updateCustomerAccountDetails(@RequestBody PropertyDetailDTO propertyDetailDto) {
+
+		return propertyDetailsService.updatepropertyDetails(propertyDetailDto);
+	}
+
+	@DeleteMapping(value = "/delete/{ID}", consumes = "application/json")
+	public String deletePropertyDetail(@PathVariable long ID) {
+		propertyDetailsService.deletepropertyDetailsById(ID);
+
+		return "Deleted the customerAccountDetails" + ID;
+	}
+
+	@GetMapping(value = "/getbyid/{id}", produces = "application/json")
+	public PropertyDetail getcustomerAccountDetailsByCustomerId(@PathVariable int id) {
+
+		return propertyDetailsService.getpropertyDetailsId(id);
+	}
+
+	@GetMapping(value = "/getAll", produces = "application/json")
+	public List<PropertyDetail> getAllAdmin() {
+
+		return propertyDetailsService.getAllPropertyDetails();
+	}
+	
+}

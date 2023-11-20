@@ -1,0 +1,115 @@
+package com.hexaware.loanmanagementsystem.entity;
+
+import jakarta.persistence.OneToOne;
+
+public class CustomerAccountDetails {
+
+	private long AccountDetailsId;
+	private String Name;
+	private long AccountNumber;
+	private String BankName;
+	private String PanCardNumber;
+	private long AadharNumber;
+	
+	
+	
+	
+	
+	
+	
+	public CustomerAccountDetails() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
+	public long getAccountDetailsId() {
+		return AccountDetailsId;
+	}
+
+
+
+
+	public void setAccountDetailsId(long accountDetailsId) {
+		AccountDetailsId = accountDetailsId;
+	}
+
+
+
+
+	public String getName() {
+		return Name;
+	}
+
+
+
+
+	public void setName(String name) {
+		Name = name;
+	}
+
+
+
+
+	public long getAccountNumber() {
+		return AccountNumber;
+	}
+
+
+
+
+	public void setAccountNumber(long accountNumber) {
+		AccountNumber = accountNumber;
+	}
+
+
+
+
+	public String getBankName() {
+		return BankName;
+	}
+
+
+
+
+	public void setBankName(String bankName) {
+		BankName = bankName;
+	}
+
+
+
+
+	public String getPanCardNumber() {
+		return PanCardNumber;
+	}
+
+
+
+
+	public void setPanCardNumber(String panCardNumber) {
+		PanCardNumber = panCardNumber;
+	}
+
+
+
+
+	public long getAadharNumber() {
+		return AadharNumber;
+	}
+
+
+
+
+	public void setAadharNumber(long aadharNumber) {
+		AadharNumber = aadharNumber;
+	}
+
+
+
+
+
+	
+	
+	
+}

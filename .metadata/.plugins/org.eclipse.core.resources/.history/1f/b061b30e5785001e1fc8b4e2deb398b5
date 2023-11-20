@@ -1,0 +1,91 @@
+package com.hexaware.loanmanagementsystem.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.hexaware.loanmanagementsystem.dto.CustomerAccountDetailsDTO;
+import com.hexaware.loanmanagementsystem.entity.CustomerAccountDetails;
+import com.hexaware.loanmanagementsystem.entity.CustomerDetails;
+import com.hexaware.loanmanagementsystem.repository.CustomerAccountDetailsRepository;
+import com.hexaware.loanmanagementsystem.repository.CustomerDetailsRepository;
+
+@Service
+public class CustomerAccountDetailsServiceImp implements ICustomerAccountDetailsService {
+
+	@Autowired
+	private CustomerAccountDetailsRepository customerAccountDetailRepository;
+
+	@Autowired
+	private CustomerDetailsRepository customerDetailsRepository;
+
+	@Override
+	public CustomerAccountDetails createCustomerAccountDetails(CustomerAccountDetailsDTO customerAccountDetails) {
+
+		CustomerAccountDetails customerAccountDetail = new CustomerAccountDetails();
+		customerAccountDetail.setAccountNumber(customerAccountDetails.getAccountNumber());
+		customerAccountDetail.setName(customerAccountDetails.getName());
+		customerAccountDetail.setBankName(customerAccountDetails.getBankName());
+		customerAccountDetail.setPanCardNumber(customerAccountDetails.getPanCardNumber());
+		customerAccountDetail.setAadharNumber(customerAccountDetails.getAadharNumber());
+
+		// mapping btw customer and customer account
+		CustomerDetails customerDetails = customerDetailsRepository
+				.findByCustomerName(customerAccountDetails.getName());
+
+		customerDetails.setCustomerAccountDetails(customerAccountDetail);
+
+		customerDetailsRepository.save(customerDetails);
+
+		CustomerDetails customerDetails1 = customerDetailsRepository
+				.findByCustomerName(customerAccountDetails.getName());
+
+		return customerAccountDetailRepository.save(customerDetails1.getCustomerAccountDetails());
+	}
+
+	@Override
+	public CustomerAccountDetails updateCustomerAccountDetails(CustomerAccountDetailsDTO customerAccountDetails) {
+
+		CustomerAccountDetails customerAccountDetail = new CustomerAccountDetails();
+		customerAccountDetail.setAccountDetailsId(customerAccountDetails.getAccountDetailsId());
+		customerAccountDetail.setAccountNumber(customerAccountDetails.getAccountNumber());
+		customerAccountDetail.setName(customerAccountDetails.getName());
+		customerAccountDetail.setBankName(customerAccountDetails.getBankName());
+		customerAccountDetail.setPanCardNumber(customerAccountDetails.getPanCardNumber());
+		customerAccountDetail.setAadharNumber(customerAccountDetails.getAadharNumber());
+
+		// mapping btw customer and customer account
+		CustomerDetails customerDetails = customerDetailsRepository
+				.findByCustomerName(customerAccountDetails.getName());
+
+		customerDetails.setCustomerAccountDetails(customerAccountDetail);
+
+		customerDetailsRepository.save(customerDetails);
+
+		CustomerDetails customerDetails1 = customerDetailsRepository
+				.findByCustomerName(customerAccountDetails.getName());
+
+		return customerAccountDetailRepository.save(customerDetails1.getCustomerAccountDetails());
+	}
+
+	@Override
+	public void deleteCustomerAccountDetails(long customerAccountDetailsID) {
+
+		customerAccountDetailRepository.deleteById(customerAccountDetailsID);
+
+	}
+
+	@Override
+	public CustomerAccountDetails getCustomerAccountDetailsByCustomerId(long CustomerID) {
+
+		return customerAccountDetailRepository.findById(CustomerID).orElse(new CustomerAccountDetails());
+	}
+
+	@Override
+	public List<CustomerAccountDetails> getAllCustomerAccountDetails() {
+
+		return customerAccountDetailRepository.findAll();
+	}
+
+}

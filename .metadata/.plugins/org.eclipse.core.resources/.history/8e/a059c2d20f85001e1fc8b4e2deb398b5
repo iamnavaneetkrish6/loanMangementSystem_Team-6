@@ -1,0 +1,26 @@
+package com.hexaware.loanmanagementsystem.dto;
+
+import java.time.LocalDate;
+
+public class CustomerLoanInformationDTO {
+
+	private long loanInformationId;
+	private long loanNumber;
+	private String customerName;
+	private double loanAmount;
+	private LocalDate loanOrginationDate;
+	private String loanStatus = "PENDING";
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public CustomerLoanInformationDTO() {
+		super();
+	}
+
+}

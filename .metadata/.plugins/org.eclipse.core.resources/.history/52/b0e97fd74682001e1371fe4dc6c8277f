@@ -1,0 +1,30 @@
+package com.hexaware.loanmanagementsystem.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+
+@Entity
+public class PropertyDetail {
+
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long propertyId;
+	private String propertyOwner;
+	private String propertyAddress;
+	private double propertyValue;
+
+	@OneToOne(mappedBy = "propertyDetails")
+	private LoanApplyDetails loanApplyDetails;
+	
+	
+	
+	
+	public PropertyDetail() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

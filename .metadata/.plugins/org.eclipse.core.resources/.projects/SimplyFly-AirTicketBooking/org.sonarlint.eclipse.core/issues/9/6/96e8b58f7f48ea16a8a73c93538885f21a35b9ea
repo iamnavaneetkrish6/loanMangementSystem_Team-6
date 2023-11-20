@@ -1,0 +1,6 @@
+
+t	java:S107'"AConstructor has 9 parameters, which is greater than 7 authorized.b 6ab0b4fe7a26545e5639dbec0df9d878h
+p
+java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.b 213dc3edb2dcf23ba41937eb2beefbfah
+p
+java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.b 213dc3edb2dcf23ba41937eb2beefbfah

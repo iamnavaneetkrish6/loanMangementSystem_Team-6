@@ -1,0 +1,9 @@
+package com.hexaware.loanmanagementsystem.service;
+
+public class CustomerLoanInformationImp {
+
+	public CustomerLoanInformationImp() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

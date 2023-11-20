@@ -1,0 +1,10 @@
+package com.hexaware.loanmanagementsystem.service;
+
+public class CustomerLoanHistoryServiceImp implements ICustomerLoanHistoryService {
+
+	public CustomerLoanHistoryServiceImp() {
+
+	
+	}
+
+}

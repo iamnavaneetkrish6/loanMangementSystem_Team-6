@@ -1,0 +1,9 @@
+package com.hexaware.loanmanagementsystem.entity;
+
+public class CustomerLoanInformation {
+
+	public CustomerLoanInformation() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

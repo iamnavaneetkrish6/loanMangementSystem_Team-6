@@ -1,0 +1,32 @@
+package com.hexaware.loanmanagementsystem.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.hexaware.loanmanagementsystem.entity.CustomerDetails;
+import com.hexaware.loanmanagementsystem.entity.CustomerLoanInformation;
+import com.hexaware.loanmanagementsystem.repository.CustomerDetailsRepository;
+
+public class CustomerLoanHistoryServiceImp implements ICustomerLoanHistoryService {
+
+	@Autowired
+	private CustomerDetailsRepository customerDetailsRepository;
+	
+	public CustomerLoanHistoryServiceImp() {
+
+		super();
+	
+	}
+
+	@Override
+	public List<CustomerLoanInformation> getCustomerLoanHistoryByCusmtomerName(String customerName) {
+
+		CustomerDetails customerDetails = customerDetailsRepository.findByCustomerName(customerName);
+		
+		
+		
+		return customerDetails.getCustomerLoanInformation();
+	}
+
+}

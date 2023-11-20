@@ -1,0 +1,57 @@
+package com.hexaware.loanmanagementsystem.restcontroller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.hexaware.loanmanagementsystem.dto.CustomerDetailsDTO;
+import com.hexaware.loanmanagementsystem.entity.CustomerDetails;
+import com.hexaware.loanmanagementsystem.service.ICustomerDetailsService;
+
+@RestController
+@RequestMapping("/api/v1/customer-details/")
+public class CustomerDetailsRestController {
+
+	@Autowired
+	ICustomerDetailsService customerDetailsService;
+
+	@PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
+	public CustomerDetails createCustomerAccountDetails(@RequestBody CustomerDetailsDTO customerDetailsDto) {
+
+		return customerDetailsService.customerRegisteration(customerDetailsDto);
+	}
+
+	@PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
+	public CustomerDetails updateCustomerAccountDetails(@RequestBody CustomerDetailsDTO customerDetailsDto) {
+
+		return customerDetailsService.updateCustomerDetails(customerDetailsDto);
+	}
+
+	@DeleteMapping(value = "/delete/{ID}", consumes = "application/json")
+	public String deleteCustomerAcountDetails(@PathVariable long ID) {
+		customerDetailsService.deleteCustomer(ID);
+
+		return "Deleted the customerAccountDetails" + ID;
+	}
+
+	@GetMapping(value = "/getbyid/{id}", produces = "application/json")
+	public CustomerDetails getcustomerAccountDetailsByCustomerId(@PathVariable int id) {
+
+		return customerDetailsService.getCustomerDetailsById(id);
+	}
+
+	@GetMapping(value = "/getAll", produces = "application/json")
+	public List<CustomerDetails> getAllAdmin() {
+
+		return customerDetailsService.getAllCustomerDetails();
+	}
+
+}

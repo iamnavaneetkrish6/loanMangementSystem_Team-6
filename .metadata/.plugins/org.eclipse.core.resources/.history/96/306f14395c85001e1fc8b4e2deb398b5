@@ -1,0 +1,58 @@
+package com.hexaware.loanmanagementsystem.restcontroller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.hexaware.loanmanagementsystem.dto.CustomerDetailsDTO;
+import com.hexaware.loanmanagementsystem.dto.LoanApplyDetailsDTO;
+import com.hexaware.loanmanagementsystem.entity.CustomerDetails;
+import com.hexaware.loanmanagementsystem.entity.LoanApplyDetails;
+import com.hexaware.loanmanagementsystem.service.CustomerDetailsServiceImp;
+import com.hexaware.loanmanagementsystem.service.LoanApplyDetailsServiceImp;
+
+@RestController
+@RequestMapping("/api/user/")
+public class UserController {
+
+	@Autowired
+	CustomerDetailsServiceImp customerDetailsService;
+	
+	@Autowired
+	LoanApplyDetailsServiceImp loanApplyDetailsServiceImp;
+	
+	
+	@PostMapping(value = "registration", consumes = "application/json", produces = "application/json")
+	public CustomerDetails userRegistration(@RequestBody CustomerDetailsDTO customerDetailsDto)
+	{
+
+		return customerDetailsService.customerRegisteration(customerDetailsDto);
+	}
+	
+	@PostMapping(value = "createloan", consumes = "application/json", produces = "application/json")
+	public LoanApplyDetails  createLoanDetails(@RequestBody LoanApplyDetailsDTO  loanApplyDetailsDto)
+	{
+
+		return loanApplyDetailsServiceImp.createLoanApplyDetails(loanApplyDetailsDto);
+	}
+	
+
+	@GetMapping("allcustomer")
+	public List<CustomerDetails> getAllCustomerDetails(){
+		
+		return customerDetailsService.getAllCustomerDetails();
+	}
+	
+	
+	@GetMapping("allloan")
+	public List<LoanApplyDetails> getAllLoanDetails(){
+		
+		return loanApplyDetailsServiceImp.getAllLoanDetails();
+	}
+	
+}

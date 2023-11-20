@@ -1,0 +1,136 @@
+package com.hexaware.loanmanagementsystem.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.hexaware.loanmanagementsystem.dto.LoanApplyDetailsDTO;
+import com.hexaware.loanmanagementsystem.entity.CustomerDetails;
+import com.hexaware.loanmanagementsystem.entity.LoanApplyDetails;
+import com.hexaware.loanmanagementsystem.entity.LoanType;
+import com.hexaware.loanmanagementsystem.entity.PropertyDetail;
+import com.hexaware.loanmanagementsystem.repository.CustomerDetailsRepository;
+import com.hexaware.loanmanagementsystem.repository.LoanApplyDetailsRepository;
+import com.hexaware.loanmanagementsystem.repository.LoanTypesRepository;
+import com.hexaware.loanmanagementsystem.repository.PropertyDetailsRepository;
+
+@Service
+public class LoanApplyDetailsServiceImp implements ILoanApplyDetailsService {
+
+	@Autowired
+	private LoanApplyDetailsRepository loanApplyDetailsRepository;
+	
+	@Autowired
+	private CustomerDetailsRepository customerDetailsRepository;
+	
+	@Autowired
+	private LoanTypesRepository loanTypeRepository;
+	
+	@Autowired
+	private PropertyDetailsRepository propertyDetailsRepository;
+	
+	@Autowired
+	private ICustomerLoanInformationService customerLoanInformationService;
+	
+	
+	@Override
+	public LoanApplyDetails createLoanApplyDetails(LoanApplyDetailsDTO loanApplyDetailDto) {
+		// TODO Auto-generated method stub
+		
+
+		LoanApplyDetails loanApplyDetail = new LoanApplyDetails();
+		loanApplyDetail.setLoanTypeName(loanApplyDetailDto.getLoanTypeName());
+		loanApplyDetail.setLoanAmount(loanApplyDetailDto.getLoanAmount());
+		loanApplyDetail.setLoanApplyDate(loanApplyDetailDto.getLoanApplyDate());
+		loanApplyDetail.setPropertyAddress(loanApplyDetailDto.getPropertyAddress());
+		loanApplyDetail.setCustomerName(loanApplyDetailDto.getCustomerName());
+		
+		
+		PropertyDetail propertyDetail = propertyDetailsRepository.findByPropertyOwner(loanApplyDetailDto.getCustomerName());
+		
+		//propertyDetail.setLoanApplyDetails(loanApplyDetail);  //change at last order
+		
+		loanApplyDetail.setPropertyDetail(propertyDetail);
+		
+		
+		
+		LoanType loanType = loanTypeRepository.findByLoanTypeName(loanApplyDetailDto.getLoanTypeName());
+		
+		loanApplyDetail.setLoantype(loanType);  //change at last 
+		
+		loanType.getLoanApplyDetails().add(loanApplyDetail);
+		
+		
+		
+		CustomerDetails customerDetails =  customerDetailsRepository.findByCustomerName(loanApplyDetailDto.getCustomerName());
+		
+		loanApplyDetail.setCustomerDetails(customerDetails);   //change at last 
+
+		
+		
+		loanType.getLoanApplyDetails().add(loanApplyDetail);
+		
+		propertyDetail.setLoanApplyDetails(loanApplyDetail); 
+		
+		customerDetails.getLoanApplyDetails().add(loanApplyDetail);
+		
+		
+		// loan information call
+
+		
+		
+		return loanApplyDetailsRepository.save(loanApplyDetail);
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@Override
+	public LoanApplyDetails updateApplyDetails(LoanApplyDetailsDTO loanApplyDetailDto) {
+		// TODO Auto-generated method stub
+		LoanApplyDetails loanApplyDetail = new LoanApplyDetails();
+		loanApplyDetail.setLoanApplyDate(loanApplyDetailDto.getLoanApplyDate());		
+		
+		
+		return loanApplyDetailsRepository.save(loanApplyDetail);
+	}
+
+	@Override
+	public void deleteApplyDetails(long loanApplyDetailId) {
+
+		loanApplyDetailsRepository.deleteById(loanApplyDetailId);
+		
+	}
+
+	@Override
+	public LoanApplyDetails getloanDetailsByLoanNumber(long loanApplyDetailId) {
+		// TODO Auto-generated method stub
+		return loanApplyDetailsRepository.findById(loanApplyDetailId).orElse(new LoanApplyDetails());
+	}
+
+	@Override
+	public List<LoanApplyDetails> getAllLoanDetails() {
+		// TODO Auto-generated method stub
+		return loanApplyDetailsRepository.findAll();
+	}
+
+
+
+}
