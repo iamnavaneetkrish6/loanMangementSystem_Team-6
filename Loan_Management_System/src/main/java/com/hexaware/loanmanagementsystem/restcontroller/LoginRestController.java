@@ -38,6 +38,9 @@ public class LoginRestController {
         authenticate(authRequest.getUsername(), authRequest.getPassword(), userDetailsService);
 
         String token = jwtService.generateToken(authRequest.getUsername());
+        
+        logger.info("Admin login successful for username: {}", authRequest.getUsername());
+        
         return "Admin login successful. Token: " + token;
     }
 
@@ -46,6 +49,8 @@ public class LoginRestController {
         authenticate(authRequest.getUsername(), authRequest.getPassword(), userDetailsService);
 
         String token = jwtService.generateToken(authRequest.getUsername());
+        
+        logger.info("Customer login successful for username: {}", authRequest.getUsername());
         return "User login successful. Token: " + token;
     }
     
