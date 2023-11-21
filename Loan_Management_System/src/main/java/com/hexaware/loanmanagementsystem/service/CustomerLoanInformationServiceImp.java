@@ -83,6 +83,7 @@ public class CustomerLoanInformationServiceImp implements ICustomerLoanInformati
 		return customerLoanInformations;
 	}
 
+	//TO know Customer loan Status
 	@Override
 	public CustomerLoanInformation getByLoanNumber(long loanNumber) {
 
@@ -97,6 +98,7 @@ public class CustomerLoanInformationServiceImp implements ICustomerLoanInformati
 		return customerLoanInformation;
 	}
 
+	// Customer Loan History
 	@Override
 	public List<CustomerLoanInformation> getCustomerLoanHistoryByName(String customerName) {
 
