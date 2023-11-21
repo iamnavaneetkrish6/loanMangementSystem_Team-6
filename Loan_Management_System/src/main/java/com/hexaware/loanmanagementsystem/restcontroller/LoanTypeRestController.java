@@ -51,14 +51,14 @@ public class LoanTypeRestController {
 	}
 
 	@GetMapping(value = "/getbyloantypeid/{id}", produces = "application/json")
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN,ROLE_USER')")
+	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
 	public LoanType getLoanTypeByLoanTypeId(@PathVariable int id) {
 
 		return loanTypesService.getLoanTypeById(id);
 	}
 
 	@GetMapping(value = "/getAllloantype", produces = "application/json")
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN,ROLE_USER')")
+	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
 	public List<LoanType> getAllLoanType() {
 
 		return loanTypesService.getAllLoanType();

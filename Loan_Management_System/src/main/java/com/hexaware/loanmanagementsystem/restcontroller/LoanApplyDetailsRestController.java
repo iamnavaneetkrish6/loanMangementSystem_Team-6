@@ -30,21 +30,21 @@ public class LoanApplyDetailsRestController {
 	
 	
 	@PostMapping(value = "/addloan", consumes = "application/json", produces = "application/json")
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN,ROLE_USER')")
+	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
 	public LoanApplyDetails createLoanApplyDetails(@RequestBody @Valid LoanApplyDetailsDTO loanApplyDetailsDto) {
 
 		return loanApplyDetailsService.createLoanApplyDetails(loanApplyDetailsDto);
 	}
 
 	@PutMapping(value = "/updateloan", consumes = "application/json", produces = "application/json")
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN,ROLE_USER')")
+	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
 	public LoanApplyDetails updateLoanApplyDetails(@RequestBody @Valid LoanApplyDetailsDTO loanApplyDetailsDto) {
 
 		return loanApplyDetailsService.updateApplyDetails(loanApplyDetailsDto);
 	}
 
 	@DeleteMapping(value = "/deleteloan/{ID}", consumes = "application/json")
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN,ROLE_USER')")
+	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
 	public ResponseEntity<String> deleteLoanApplyDetailsById(@PathVariable long ID) {
 		loanApplyDetailsService.deleteApplyDetails(ID);
 
@@ -54,7 +54,7 @@ public class LoanApplyDetailsRestController {
 	}
 
 	@GetMapping(value = "/getbyloannumber/{loanNo}", produces = "application/json")
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN,ROLE_USER')")
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 	public LoanApplyDetails getLoanApplyDetailsByLoanNumber(@PathVariable int loanNo) {
 
 		return loanApplyDetailsService.getloanDetailsByLoanNumber(loanNo);

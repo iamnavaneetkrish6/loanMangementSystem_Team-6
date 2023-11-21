@@ -53,7 +53,7 @@ public class CustomerLoanInformationRestController {
 	}
 
 	@GetMapping(value = "/getbycustomerloaninformationid/{loanNumber}", produces = "application/json")
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN,ROLE_USER')")
+	@PreAuthorize("hasAnyAuthority('RROLE_USER')")
 	public CustomerLoanInformation getCustomerLoanInformationByLoanNumber(@PathVariable long loanNumber) {
 
 		return customerLoanInformationService.getCustomerLoanInformationById(loanNumber);
@@ -66,7 +66,7 @@ public class CustomerLoanInformationRestController {
 		return customerLoanInformationService.getAllCustomerLoanInformation();
 	}
 
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN,ROLE_USER')")
+	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
 	@GetMapping(value = "/getloanhistory/{name}", produces = "application/json")
 	public List<CustomerLoanInformation> getCustomerInformationByName(@PathVariable String name) {
 

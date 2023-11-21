@@ -35,14 +35,14 @@ public class CustomerDetailsRestController {
 	}
 
 	@PutMapping(value = "/updatecustomer-detail", consumes = "application/json", produces = "application/json")
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN,ROLE_USER')")
+	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
 	public CustomerDetails updateCustomerDetails(@RequestBody @Valid CustomerDetailsDTO customerDetailsDto) {
 
 		return customerDetailsService.updateCustomerDetails(customerDetailsDto);
 	}
 
 	@DeleteMapping(value = "/deletecustomer-detail/{ID}", consumes = "application/json")
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN,ROLE_USER')")
+	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
 	public ResponseEntity<String> deleteCustomerDetails(@PathVariable long ID) {
 		customerDetailsService.deleteCustomer(ID);
 

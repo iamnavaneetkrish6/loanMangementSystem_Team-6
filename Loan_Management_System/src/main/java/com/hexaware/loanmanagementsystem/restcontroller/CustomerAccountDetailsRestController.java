@@ -37,7 +37,7 @@ public class CustomerAccountDetailsRestController {
 	}
 
 	@PutMapping(value = "/updatecustomer-details", consumes = "application/json", produces = "application/json")
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN,ROLE_USER')")
+	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
 	public CustomerAccountDetails updateCustomerAccountDetails(
 			@RequestBody @Valid CustomerAccountDetailsDTO customerAccountDetailsDto) {
 
@@ -45,7 +45,7 @@ public class CustomerAccountDetailsRestController {
 	}
 
 	@DeleteMapping(value = "/deletecustomer-details/{ID}", consumes = "application/json")
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN,ROLE_USER')")
+	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
 	public ResponseEntity<String> deleteCustomerAcountDetails(@PathVariable long ID) {
 
 		customerAccountDetailsService.deleteCustomerAccountDetails(ID);
@@ -55,7 +55,7 @@ public class CustomerAccountDetailsRestController {
 	}
 
 	@GetMapping(value = "/getbycustomer-detailsid/{id}", produces = "application/json")
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN,ROLE_USER')")
+	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
 	public CustomerAccountDetails getcustomerAccountDetailsByCustomerId(@PathVariable int id) {
 
 		return customerAccountDetailsService.getCustomerAccountDetailsByCustomerId(id);

@@ -51,7 +51,7 @@ public class PropertyDetailRestController {
 	}
 	
 	@GetMapping(value = "/getbypropertydetailid/{id}", produces = "application/json")
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN,ROLE_USER')")
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 	public PropertyDetail getPropertyDetailId(@PathVariable int id) {
 
 		return propertyDetailsService.getpropertyDetailsId(id);
