@@ -27,17 +27,19 @@ public class CustomerLoanInformationRestController {
 
 	@Autowired
 	private ICustomerLoanInformationService customerLoanInformationService;
-	
+
 	@PostMapping(value = "/addcustomerloaninformation", consumes = "application/json", produces = "application/json")
 	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
-	public CustomerLoanInformation createCustomerLoanInformationService(@RequestBody @Valid CustomerLoanInformationDTO customerLoanInformationDto) {
+	public CustomerLoanInformation createCustomerLoanInformationService(
+			@RequestBody @Valid CustomerLoanInformationDTO customerLoanInformationDto) {
 
 		return customerLoanInformationService.createCustomerLoanInformation(customerLoanInformationDto);
 	}
 
 	@PutMapping(value = "/updatecustomerloaninformation", consumes = "application/json", produces = "application/json")
 	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
-	public CustomerLoanInformation updateCustomerLoanInformationService(@RequestBody @Valid CustomerLoanInformationDTO customerLoanInformationDto) {
+	public CustomerLoanInformation updateCustomerLoanInformationService(
+			@RequestBody @Valid CustomerLoanInformationDTO customerLoanInformationDto) {
 
 		return customerLoanInformationService.updateCustomerLoanInformation(customerLoanInformationDto);
 	}
@@ -47,7 +49,8 @@ public class CustomerLoanInformationRestController {
 	public ResponseEntity<String> deleteCustomerLoanInformationById(@PathVariable long ID) {
 		customerLoanInformationService.deleteCustomerLoanInformation(ID);
 
-		return new ResponseEntity<>("Customer loan information deleted sucessfully", HttpStatus.ACCEPTED);	}
+		return new ResponseEntity<>("Customer loan information deleted sucessfully", HttpStatus.ACCEPTED);
+	}
 
 	@GetMapping(value = "/getbycustomerloaninformationid/{loanNumber}", produces = "application/json")
 	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN,ROLE_USER')")
@@ -62,6 +65,11 @@ public class CustomerLoanInformationRestController {
 
 		return customerLoanInformationService.getAllCustomerLoanInformation();
 	}
-	
-	
+
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN,ROLE_USER')")
+	@GetMapping(value = "/getloanhistory/{name}", produces = "application/json")
+	public List<CustomerLoanInformation> getCustomerInformationByName(@PathVariable String name) {
+
+		return customerLoanInformationService.getCustomerLoanHistoryByName(name);
+	}
 }

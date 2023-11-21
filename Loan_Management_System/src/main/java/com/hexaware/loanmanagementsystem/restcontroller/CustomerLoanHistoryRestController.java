@@ -1,4 +1,4 @@
-package com.hexaware.loanmanagementsystem.restcontroller;
+/*package com.hexaware.loanmanagementsystem.restcontroller;
 
 import java.util.List;
 
@@ -26,3 +26,4 @@ public class CustomerLoanHistoryRestController {
 		return customerLoanHistoryService.getCustomerLoanHistoryByCusmtomerName(customerId);
 	}
 }
+*/

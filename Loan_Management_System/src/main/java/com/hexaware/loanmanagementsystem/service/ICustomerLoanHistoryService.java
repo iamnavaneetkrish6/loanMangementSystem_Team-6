@@ -1,4 +1,4 @@
-package com.hexaware.loanmanagementsystem.service;
+/*package com.hexaware.loanmanagementsystem.service;
 
 import java.util.List;
 
@@ -9,3 +9,4 @@ public interface ICustomerLoanHistoryService{
 	public List<CustomerLoanInformation> getCustomerLoanHistoryByCusmtomerName(String customerName);
 
 }
+*/

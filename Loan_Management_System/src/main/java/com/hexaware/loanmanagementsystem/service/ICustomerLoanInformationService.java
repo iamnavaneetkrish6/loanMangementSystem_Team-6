@@ -19,4 +19,5 @@ public interface ICustomerLoanInformationService {
 	
 	public CustomerLoanInformation getByLoanNumber(long loanNumber);
 
+	public List<CustomerLoanInformation> getCustomerLoanHistoryByName(String customerName);
 }

@@ -97,4 +97,10 @@ public class CustomerLoanInformationServiceImp implements ICustomerLoanInformati
 		return customerLoanInformation;
 	}
 
+	@Override
+	public List<CustomerLoanInformation> getCustomerLoanHistoryByName(String customerName) {
+
+		return customerLoanInformationRepository.findByCustomerName(customerName);
+	}
+
 }

@@ -1,4 +1,4 @@
-package com.hexaware.loanmanagementsystem.service;
+/*package com.hexaware.loanmanagementsystem.service;
 
 import java.util.List;
 
@@ -42,4 +42,4 @@ public class CustomerLoanHistoryServiceImp implements ICustomerLoanHistoryServic
 		return customerDetails.getCustomerLoanInformation();
 	}
 
-}
+}*/
